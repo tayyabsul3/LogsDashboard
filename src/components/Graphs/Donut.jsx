@@ -26,18 +26,18 @@ export function Donut({ radialColor, percentage }) {
     },
   };
   return (
-    <Card className="flex flex-col bg-transparent  border-none w-[9rem] text-white">
+    <Card className="flex flex-col bg-transparent  border-none w-[10rem] text-white">
       <CardContent className=" pb-0  ">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto  p-0 aspect-square max-h-[200px] fill-white"
+          className="mx-auto  aspect-square max-h-[200px] fill-white"
         >
           <RadialBarChart
             data={chartData}
             startAngle={0}
             endAngle={percentage * 3.6}
-            innerRadius={30}
-            outerRadius={55}
+            innerRadius={35}
+            outerRadius={65}
           >
             <PolarGrid
               gridType="circle"
@@ -60,7 +60,7 @@ export function Donut({ radialColor, percentage }) {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-white text-base  bg-red-50"
+                          className="fill-white text-xl bg-red-50"
                         >
                           {percentage}%
                         </tspan>

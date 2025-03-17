@@ -50,14 +50,14 @@ const chartConfig = {
 
 export function Graph() {
   return (
-    <Card className="w-full border-none  linear_g_1   rounded-3xl bg-blue-900 text-white">
+    <Card className="w-full border-none  linear_g_1  rounded-3xl bg-blue-900 text-white">
       <CardHeader>
-        <CardTitle className="text-lg font-normal">Files in time</CardTitle>
+        <CardTitle className="text-xl font-normal">Files in time</CardTitle>
       </CardHeader>
       <CardContent>
         <ChartContainer
           config={chartConfig}
-          className="w-full sm:w-full md:h-[250px] text-white"
+          className="w-full sm:w-full md:h-[300px] text-white"
         >
           <AreaChart
             accessibilityLayer

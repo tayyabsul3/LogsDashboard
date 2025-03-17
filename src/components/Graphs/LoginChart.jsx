@@ -41,12 +41,9 @@ const chartConfig = {
 export function LoginChart() {
   return (
     <Card className="bg-transparent border-none w-full ">
-      <h1 className="text-white  p-5 w-full text-lg  ">Login Successful</h1>
+      <h1 className="text-white  p-5 w-full  ">Login Successful</h1>
       <CardContent>
-        <ChartContainer
-          config={chartConfig}
-          className="max-w-full w-full max-h-[200px] "
-        >
+        <ChartContainer config={chartConfig} className="max-w-full w-full ">
           <LineChart
             accessibilityLayer
             data={chartData}
