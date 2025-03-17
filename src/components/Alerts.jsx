@@ -37,8 +37,8 @@ const Alerts = () => {
   }, []);
 
   return (
-    <div className="body py-5 px-16 flex flex-col gap-5 h-[85vh] overflow-y-auto">
-      <h1 className="text-white text-3xl  mt-5">Alerts</h1>
+    <div className="body py-5 px-10 flex text-sm flex-col gap-5 h-[85vh] overflow-y-auto">
+      <h1 className="text-white text-2xl  mt-5">Alerts</h1>
 
       <div className="flex-1 rounded-xl linear_g_1 text-white p-5 overflow-auto  max-h-[60vh]">
         <Table className="text-white">

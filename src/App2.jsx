@@ -17,11 +17,8 @@ import {
 import Dashboard from "./components/Dashboard";
 import Dashboards2 from "./components/Dashboards2";
 import LogsAnalysis from "./components/LogsAnalysis";
-import DataSecurity from "./components/DataSecurity";
-import LogsComponent from "./components/Logs";
-import Auth from "./components/Auth/Auth";
-import SignupPage from "./components/Auth/SignupPage";
-import { useState, useRef, useEffect } from "react";
+
+import { useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Rules from "./components/Rules";
@@ -44,27 +41,27 @@ function App2() {
   const upperButtons = [
     {
       text: "Main Dashboard",
-      icon: <IoIosHome size={18} />,
+      icon: <IoIosHome size={15} />,
       component: <Dashboard />,
     },
     {
       text: "DARC",
-      icon: <IoIosHome size={18} />,
+      icon: <IoIosHome size={15} />,
       component: <Dashboards2 />,
     },
     {
       text: "Real Time Logs",
-      icon: <IoIosHome size={18} />,
+      icon: <IoIosHome size={15} />,
       component: <LogsAnalysis />,
     },
     {
       text: "Users Modeling",
-      icon: <HiWrench size={18} />,
+      icon: <HiWrench size={15} />,
       component: <UserModelOverview />,
     },
     // {
     //   text: "Data Security",
-    //   icon: <BiSolidLockOpenAlt size={18} />,
+    //   icon: <BiSolidLockOpenAlt size={15} />,
     //   component: <DataSecurity />,
     // },
     // {
@@ -74,24 +71,24 @@ function App2() {
     // },
     {
       text: "Correlation Rules",
-      icon: <IoIosHome size={18} />,
+      icon: <IoIosHome size={15} />,
       component: <Rules />,
     },
     {
       text: "Log Detail ",
-      icon: <IoIosHome size={18} />,
+      icon: <IoIosHome size={15} />,
       component: <Rules2 />,
     },
     {
       text: "Alerts ",
-      icon: <IoIosHome size={18} />,
+      icon: <IoIosHome size={15} />,
       component: <Alerts />,
     },
     {
       text: "RTL",
-      icon: <HiWrench size={18} />,
+      icon: <HiWrench size={15} />,
       component: (
-        <div className="p-10 px-16">
+        <div className="p-10">
           <UserModelingActivityOverTimeChart />
         </div>
       ),
@@ -102,13 +99,13 @@ function App2() {
   const lowerButtons = [
     // {
     //   text: "Profile",
-    //   icon: <FaUser size={18} />,
+    //   icon: <FaUser size={15} />,
     //   component: <div>Profile Component</div>,
     // },
-    // { text: "Sign In", icon: <FaNoteSticky size={18} />, component: <Auth /> },
+    // { text: "Sign In", icon: <FaNoteSticky size={15} />, component: <Auth /> },
     // {
     //   text: "Sign Up",
-    //   icon: <IoRocketSharp size={18} />,
+    //   icon: <IoRocketSharp size={15} />,
     //   component: <SignupPage />,
     // },
   ];
@@ -117,10 +114,10 @@ function App2() {
     setExpanded(!expanded);
   }
 
-  const getButtonClass = (isActive) =>
-    `flex items-center text-white gap-4 text-[0.8rem] 2xl:text-sm  py-3 rounded-2xl w-full px-2.5 ${
-      isActive ? "nav_btn_bg" : "bg-transparent py-3 rounded-3xl"
-    }`;
+  const getButtonClass = (isActive, expand) =>
+    `flex items-center text-white   text-[0.6rem] 2xl:text-xs  py-2 rounded-xl w-full px-2.5 ${
+      isActive ? "nav_btn_bg " : "  bg-transparent py-3 rounded-3xl"
+    } ${expand ? "gap-0" : "gap-3"}`;
 
   const getIconClass = (isActive) =>
     `p-2 rounded-xl ${isActive ? "bg-blue-600" : "nav_btn_bg_2 text-blue-600"}`;
@@ -182,19 +179,19 @@ function App2() {
   }
 
   return (
-    <div className="flex transition-all whitespace-nowrap ease-in-out duration-300">
+    <div className="flex transition-all text-sm whitespace-nowrap ease-in-out duration-300">
       <div
         onClick={togglechatbotpreview}
-        className="icon absolute z-40 bottom-10 right-10 text-white bg-blue-600 p-4 rounded-2xl shadow-2xl cursor-pointer  "
+        className="icon absolute z-40 shadow-gray-600 bottom-10 right-10 text-white bg-blue-600 p-4 rounded-2xl shadow-2xl cursor-pointer  "
       >
-        <BsChat size={30} />
+        <BsChat size={25} />
       </div>
       <div
         className={`icon fixed top-0 right-0 ${
           chatbotpreview ? "w-[50%] p-10" : "w-[0%] p-0 "
         } z-50 text-white  rounded-2xl flex flex-col justify-between sideANDheaderbg transition-all duration-300 shadow-2xl h-full  scrollbar-hide `}
       >
-        <div className="chat max-w-5xl mx-auto text-wrap h-full overflow-scroll w-full flex flex-col gap-5 scroll-px-12 pb-10  scrollbar-hide ">
+        <div className="chat max-w-5xl mx-auto text-wrap  h-full overflow-scroll w-full flex flex-col gap-5 scroll-px-12 pb-10  scrollbar-hide ">
           {messages.map((msg, index) => (
             <div
               key={index}
@@ -243,9 +240,9 @@ function App2() {
         onClick={() => {
           setchatbotpreview(false);
         }}
-        className={`group bg-blue-500 sidebar  
+        className={`group bg-blue-500  sidebar  
            scrollbar-hide hidden sm:block sideANDheaderbg ${
-             expanded ? "" : "w-[16rem]"
+             expanded ? "w-fit" : "w-[16rem]"
            } h-screen flex flex-col px-6 `}
         style={{ position: "relative", transition: "width 0.2s ease-in-out" }}
       >
@@ -259,19 +256,19 @@ function App2() {
         </div>
 
         {/* LOGO */}
-        <div className="logo w-full mx-auto pt-5 pb-8 flex justify-center items-center">
+        <div className="logo w-full mx-auto pt-5 pb-5 flex justify-center items-center">
           {!expanded ? (
             <img
               src="./DASSOFT.png"
               alt="Logo"
-              className="mx-auto mt-4 w-[90px]"
+              className="mx-auto mt-4 w-[80px]"
             />
           ) : (
             <div className="py-5"></div>
           )}
         </div>
         {!expanded && (
-          <div className="h-px mb-5 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+          <div className="h-px mb-7 bg-gradient-to-r from-transparent via-white to-transparent"></div>
         )}
         <div className="nav flex flex-col justify-items-start">
           {/* Render upper buttons */}
@@ -283,7 +280,7 @@ function App2() {
                 setLowerActiveTab(null); // Reset lower tab when upper is clicked
               }}
               title={expanded ? button.text : ""}
-              className={getButtonClass(upperActiveTab === index)}
+              className={getButtonClass(upperActiveTab === index, expanded)}
             >
               <span className={getIconClass(upperActiveTab === index)}>
                 {button.icon}
@@ -325,11 +322,11 @@ function App2() {
           setchatbotpreview(false);
         }}
       >
-        <div className="header w-full h-[4rem] sm:h-[5.5rem] text-indigo-300 flex justify-between">
+        <div className="header w-full h-[3rem] sm:h-[4rem] text-indigo-300 flex justify-between">
           <p></p>
           <div className="flex items-center gap-14 px-5 sm:pr-20">
             <div className="icons flex gap-10 items-center">
-              <CiSearch size={30} className="hover:cursor-pointer" />
+              <CiSearch size={25} className="hover:cursor-pointer" />
               <BsBell
                 size={20}
                 className="hover:cursor-pointer"
@@ -342,15 +339,17 @@ function App2() {
                 // }}
               />
             </div>
-            <div className="profile flex items-center gap-5">
+            <div className="profile flex items-center gap-3">
               <img
                 src="/Avatar.png"
-                className="w-[35px] sm:w-[50px] rounded-[15px] sm:rounded-3xl"
+                className="w-[30px] sm:w-[40px] rounded-[15px] sm:rounded-3xl"
                 alt="profile"
               />
-              <div className="name hidden sm:block">Muhammad Tayyab</div>
+              <div className="name text-sm hidden sm:block">
+                Muhammad Tayyab
+              </div>
               <div className="dropdown hidden sm:block">
-                <RiArrowDropDownLine size={30} />
+                <RiArrowDropDownLine size={25} />
               </div>
             </div>
           </div>

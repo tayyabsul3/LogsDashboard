@@ -52,7 +52,7 @@ export function DonutPieLabel() {
   }, []);
 
   return (
-    <Card className="flex flex-col bg-transparent   rounded-2xl border-none bg-blue-950 p-5 pr-0 pb-0 ">
+    <Card className="flex flex-col bg-transparent   rounded-2xl border-none  p-5 pr-0 pb-0 ">
       <h1 className="text-white ">Top 5 end points</h1>
       <CardContent className="flex-1   px-0">
         <ChartContainer

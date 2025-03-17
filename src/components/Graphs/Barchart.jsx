@@ -46,8 +46,8 @@ const chartConfig = {
 export function BChart() {
   return (
     <Card className="bg-transparent outline-none text-white border-none pt-5 pr-0 pl-0  w-full mx-auto">
-      <CardContent className="bg-transparent px-0">
-        <ChartContainer config={chartConfig} className="bg-transparent px-0">
+      <CardContent className="bg-transparent px-5 ">
+        <ChartContainer config={chartConfig} className="bg-transparent px-10">
           <BarChart
             accessibilityLayer
             data={chartData}

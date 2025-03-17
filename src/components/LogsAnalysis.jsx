@@ -253,13 +253,13 @@ const LogsAnalysis = () => {
   };
 
   return (
-    <div className="body py-5 px-16 flex flex-col gap-5 h-[85vh] overflow-y-auto">
+    <div className="body py-5 px-10 text-sm flex flex-col gap-5 h-[85vh] overflow-y-auto">
       <div className="linear_g_1 p-2 px-5 text-white flex items-center justify-center rounded-2xl gap-5">
         {/* Search Section */}
-        <div className="search flex gap-2 justify-between w-full px-4 py-4 mb-2 border-blue-600 text-gray-500 border-2 rounded-xl items-center">
+        <div className="search flex gap-2 justify-between w-full p-4 mb-2 border-blue-600 text-gray-500 border-2 rounded-xl items-center">
           <input
             type="search"
-            className="bg-transparent px-2 flex-1 text-medium outline-none border-none"
+            className="bg-transparent px-2 flex-1 text-medium outline-none border-none text-xs"
             placeholder="Search by keyword"
             value={searchTerm}
             onChange={handleSearch}
@@ -358,7 +358,9 @@ const LogsAnalysis = () => {
             <Card className="bg-transparent text-white border-none linear_g_1 rounded-2xl px-5">
               <CardHeader className="flex flex-col items-stretch space-y-0 p-0 sm:flex-row">
                 <div className="flex flex-1 flex-col justify-center gap-2 px-6 py-5 sm:py-6">
-                  <CardTitle className="font-normal">Logs Viewer</CardTitle>
+                  <CardTitle className="">
+                    <p className="font-normal text-lg"> Logs Viewer</p>
+                  </CardTitle>
                 </div>
               </CardHeader>
               <div className="flex justify-center align-center py-6">
@@ -375,9 +377,9 @@ const LogsAnalysis = () => {
       <div className="flex gap-5 flex-col xl:flex-row ">
         {/* Main Filters */}
         <div className="flex-[0.2] flex flex-col gap-3 linear_g_1 text-white p-5 rounded-2xl">
-          <div className="flex gap-2">
-            <LuFilter size={30} />
-            <h1 className="text-2xl">Filter</h1>
+          <div className="flex items-center gap-2">
+            <LuFilter size={20} />
+            <h1 className="text-lg">Filter</h1>
           </div>
           {/* Search Input */}
           <div className="search flex gap-2 w-full px-2 py-2 border-blue-950 text-gray-500 border-2 rounded-xl items-center">
@@ -395,7 +397,7 @@ const LogsAnalysis = () => {
               {/* Log Type Filter */}
               <div className="mb-4">
                 <h2
-                  className="text-xl flex items-center gap-5 cursor-pointer"
+                  className="text-base flex items-center gap-5 cursor-pointer"
                   onClick={() => setIsLogTypeOpen(!isLogTypeOpen)}
                 >
                   {isLogTypeOpen ? (

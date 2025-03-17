@@ -32,7 +32,7 @@ import { CgClose } from "react-icons/cg";
 import { FaComputer } from "react-icons/fa6";
 import { GoKebabHorizontal } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
-import SpChain from "@/components/Graphs/SupplyChain";
+// import SpChain from "@/components/Graphs/SupplyChain";
 
 const Application = () => {
   const options = ["chart 1 ", "chart 2"];
@@ -166,7 +166,7 @@ const Application = () => {
                 <CgClose />
               </button>
             </div>
-            <SpChain />
+            {/* <SpChain /> */}
           </div>
         </div>
       )}

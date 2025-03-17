@@ -13,7 +13,7 @@ const DasCards = ({ dasCard }) => {
     dasCard;
   return (
     <div
-      className="card   flex flex-col  sm:w-full rounded-3xl text-wrap  border-indigo-400 p-3 py-5  pb-0  text-white"
+      className="card   flex flex-col  sm:w-full rounded-3xl text-wrap  border-indigo-400 p-3 py-5   pb-0  text-white"
       style={{
         background: gradient,
       }}
@@ -29,7 +29,7 @@ const DasCards = ({ dasCard }) => {
       </div>
       <div className="flex  items-center justify-between ">
         <div className="flex items-center my-5 gap-5 sm:flex-col sm:gap-0 sm:items-start  pl-5 ">
-          <h1 className="text-xl">{total}</h1>
+          <h1 className="text-lg">{total}</h1>
           <p className="text-sm w-full">of {outOf} total</p>
         </div>
         <div className="donutchart  md:flex ">

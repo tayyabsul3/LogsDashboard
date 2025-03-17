@@ -38,17 +38,17 @@ export function RadialHalfBar() {
         <CardTitle>Radial Chart - Stacked</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader> */}
-      <h1 className="text-white "> Total Log Events</h1>
-      <CardContent className="flex overflow-hidden w-full ">
+      <h1 className="text-white text-lg "> Total Log Events</h1>
+      <CardContent className="flex overflow-hidden w-full pb-0 ">
         <ChartContainer
           config={chartConfig}
-          className="   min-h-[180px] mx-auto   w-full max-w-[200px]"
+          className="   min-h-[150px] mx-auto   w-full max-w-[150px]"
         >
           <RadialBarChart
             data={chartData}
             endAngle={180}
-            innerRadius={80}
-            outerRadius={130}
+            innerRadius={60}
+            outerRadius={100}
             className=" mt-10  "
           >
             <ChartTooltip
@@ -64,7 +64,7 @@ export function RadialHalfBar() {
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) - 16}
-                          className="fill-white text-2xl font-bold"
+                          className="fill-white text-lg font-bold"
                         >
                           {totalVisitors.toLocaleString()}
                         </tspan>

@@ -142,7 +142,7 @@ const Rules2 = () => {
   }, [searchInput, logMessage]);
 
   return (
-    <div className="body py-5 px-16 flex flex-col gap-5 h-[85vh] overflow-y-auto">
+    <div className="body py-5 px-10 text-sm flex flex-col gap-5 h-[85vh] overflow-y-auto">
       <div className="linear_g_1 p-5 px-10 flex-col shadow-lg text-white flex items-center justify-between rounded-2xl gap-5">
         <div className="top mb-5 flex justify-between w-full items-center">
           <h1 className="text-white text-2xl mt-5">Highlights</h1>
@@ -164,12 +164,12 @@ const Rules2 = () => {
           {logFields.map((item, index) => (
             <div
               key={index}
-              className="input text-gray-400 whitespace-nowrap flex-[0.33] text-sm flex flex-col justify-center items-center gap-5"
+              className="input text-gray-400 whitespace-nowrap flex-[0.33] text-sm flex flex-col justify-center items-center gap-2"
             >
               <h1>{item.label}</h1>
               <input
                 type="text"
-                className="text-left min-w-[300px] p-2 whitespace-nowrap border backdrop-blur-3xl rounded-xl"
+                className="text-left min-w-[300px] py-2 px-5 whitespace-nowrap border backdrop-blur-3xl rounded-xl text-xs"
                 style={{
                   backgroundColor: "rgba(27, 37, 75, 1)",
                   backdropFilter: "blur()",
@@ -183,11 +183,11 @@ const Rules2 = () => {
           ))}
         </div>
       </div>
-      <div className="flex-1 flex gap-10 rounded-xl max-h-[100vh] linear_g_1 text-white p-5  ">
+      <div className="flex-1 flex gap-10 text-xs rounded-xl max-h-[100vh] linear_g_1 text-white p-5  ">
         <div className="flex flex-col gap-5 w-full">
-          <h1 className="text-xl">Event Data</h1>
+          <h1 className="text-lg">Event Data</h1>
           <div
-            className="max-h-[350px] rounded-lg p-2 max-w-[450px] overflow-auto"
+            className="max-h-[350px] rounded-lg p-2 max-w-[450px] overflow-auto px-5 "
             style={{
               backgroundColor: "rgba(27, 37, 75, 1)",
               backdropFilter: "blur()",
@@ -198,7 +198,7 @@ const Rules2 = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5 w-full">
-          <h1 className="text-xl">Log Message</h1>
+          <h1 className="text-lg">Log Message</h1>
           <div
             className="h-[350px]  space-y-2 rounded-lg p-2 max-w-[450px] "
             style={{
@@ -220,7 +220,7 @@ const Rules2 = () => {
           </div>
         </div>
         <div className="flex flex-col gap-5 w-full">
-          <h1 className="text-xl">Winlog</h1>
+          <h1 className="text-lg">Winlog</h1>
           <div
             className="max-h-[350px] rounded-lg p-2 max-w-[450px] overflow-auto"
             style={{

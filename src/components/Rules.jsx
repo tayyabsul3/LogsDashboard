@@ -78,8 +78,8 @@ const Rules = () => {
   }, []);
 
   return (
-    <div className="body py-5 px-16 flex flex-col gap-5 h-[85vh] overflow-y-auto">
-      <h1 className="text-white text-3xl  mt-5">Rules</h1>
+    <div className="body py-5 px-10 flex text-sm flex-col gap-5 h-[85vh] overflow-y-auto">
+      <h1 className="text-white text-2xl  mt-5">Rules</h1>
       <div className="linear_g_1 py-5 shadow-lg px-5 text-white flex  justify-between rounded-2xl gap-5">
         <div className="inputFIelds flex flex-wrap gap-5">
           {initialFields.map(({ key, placeholder }) => (

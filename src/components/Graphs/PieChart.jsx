@@ -45,12 +45,12 @@ const chartConfig = {
 export function PieChart2() {
   return (
     <Card className="flex flex-col bg-transparent border-none text-white">
-      <h1 className="text-white  p-5 pb-0 ">Top 10 Processes</h1>
+      <h1 className="text-white  p-5 pb-0 text-lg ">Top 10 Processes</h1>
 
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 pb-0   ">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[300px] "
+          className="mx-auto aspect-square max-h-[250px] "
         >
           <PieChart className="flex gap-5 relative -rotate-90   ">
             <Pie data={chartData} dataKey="visitors" className="" />

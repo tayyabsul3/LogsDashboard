@@ -68,11 +68,11 @@ const requests = [
 export function Sources() {
   return (
     <Card className="bg-transprent border-none    text-white  border-gray-700  ">
-      <h1 className="text-white  p-5 pb-0   ">Top Sources</h1>
+      <h1 className="text-white  p-5 pb-0 text-lg  ">Top Sources</h1>
       <CardContent className="w-full  flex pt-5   items-center max-h-[300px] ">
         <ChartContainer
           config={chartConfig}
-          className="p-0 m-0 w-full max-h-[150px]"
+          className="p-0 m-0 min-w-[150px] w-full max-h-[150px]"
         >
           <BarChart
             barCategoryGap={"0%"}
@@ -80,7 +80,7 @@ export function Sources() {
             data={chartData}
             layout="vertical"
             barGap={"0%"}
-            className="w-full max-h-[300px] "
+            className="min-w-[150px] w-full max-h-[300px] "
           >
             <XAxis type="number" dataKey="desktop" hide />
             <ChartTooltip
@@ -90,7 +90,7 @@ export function Sources() {
             <Bar dataKey="desktop" fill="var(--color-desktop)" barSize={4} />
           </BarChart>
         </ChartContainer>
-        <div className="font-mono   px-0 max-xl:text-wrap text-xs ">
+        <div className="font-mono px-0 max-xl:text-wrap text-xs ">
           {requests.map((request, index) => (
             <div key={index} className=" flex flex-col">
               <p>{request.ip}</p>
