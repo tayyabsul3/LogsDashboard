@@ -1,0 +1,73 @@
+[
+    {
+        "RuleName": "Data Exfiltration",
+        "source_ip": "192.168.18.51",
+        "destination_ip": "13.201.163.160",
+        "source_port": 50118,
+        "destination_port": 27017,
+        "protocol": "tcp",
+        "Description": "Data Exfiltration "
+    },
+    {
+        "RuleName": "Data Exfiltration",
+        "source_ip": "192.168.18.51",
+        "destination_ip": "35.154.59.62",
+        "source_port": 50116,
+        "destination_port": 27017,
+        "protocol": "tcp"
+    },
+    {
+        "RuleName": "Data Exfiltration",
+        "source_ip": "192.168.18.51",
+        "destination_ip": "3.7.23.7",
+        "source_port": 50117,
+        "destination_port": 27017,
+        "protocol": "tcp"
+    },
+    {
+        "RuleName": "Suspicious Process Execution",
+        "process_name": "powershell.exe",
+        "Default_directory": "C:\\Users\\Public\\",
+        "status": "Suspicious",
+        "timestamp": "2024-08-26T12:20:00Z"
+    },
+    {
+        "RuleName": "Suspicious Process Execution",
+        "process_name": "cmd.exe",
+        "Default_directory": "C:\\Users\\Public\\",
+        "status": "Suspicious",
+        "timestamp": "2024-08-26T12:20:00Z"
+    },
+    {
+        "DPort": "ddsada",
+        "SIP": "192",
+        "Description": "das",
+        "SPort": "3000",
+        "ruleName": "Test Rule",
+        "DIP": "dsad"
+    },
+    {
+        "DPort": "ddsada",
+        "SIP": "192",
+        "Description": "das",
+        "SPort": "3000",
+        "ruleName": "Test Rule",
+        "DIP": "dsad"
+    },
+    {
+        "DPort": "huiu",
+        "SIP": "guyg",
+        "Description": "hi",
+        "SPort": "ug",
+        "ruleName": "fyfy",
+        "DIP": "ygyu"
+    },
+    {
+        "DPort": "huiu",
+        "SIP": "guyg",
+        "Description": "hi",
+        "SPort": "ug",
+        "ruleName": "fyfy",
+        "DIP": "ygyu"
+    }
+]

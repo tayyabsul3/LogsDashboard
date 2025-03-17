@@ -1,0 +1,109 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "properties": {
+        "Code": "EiffelTower",
+        "Name": "Eiffel Tower"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.2945, 48.8584]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "properties": {
+        "Code": "BigBen",
+        "Name": "Big Ben"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.1278, 51.5007]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "id": 4,
+      "properties": {
+        "Code": "SydneyOperaHouse",
+        "Name": "Sydney Opera House"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [151.2093, -33.8568]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "properties": {
+        "Code": "TajMahal",
+        "Name": "Taj Mahal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [78.0421, 27.1751]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "properties": {
+        "Code": "RedFort",
+        "Name": "Red Fort"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.2310, 28.6559]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "properties": {
+        "Code": "QutubMinar",
+        "Name": "Qutub Minar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [77.1739, 28.6139]
+      }
+    },
+    {
+      "geometry": {
+          "coordinates": [
+              0,
+              0
+          ],
+          "type": "Point"
+      },
+      "id": "jNnKG6nf",
+      "properties": {
+          "Code": "User's Name: Window3\nUser's IP: 10.0.0.4",
+          "Name": "Unknown City, Unknown Region"
+      },
+      "type": "Feature"
+  },
+  {
+      "geometry": {
+          "coordinates": [
+            73.0479,
+            33.5973
+              
+          ],
+          "type": "Point"
+      },
+      "id": "BZlPSALV",
+      "properties": {
+          "Code": "User's Name: Window3\nUser's IP: 101.50.88.211",
+          "Name": "Rawalpindi, Punjab"
+      },
+      "type": "Feature"
+  }
+  ]
+}
