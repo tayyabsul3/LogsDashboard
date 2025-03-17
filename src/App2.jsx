@@ -17,7 +17,6 @@ import {
 import Dashboard from "./components/Dashboard";
 import Dashboards2 from "./components/Dashboards2";
 import LogsAnalysis from "./components/LogsAnalysis";
-
 import { useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

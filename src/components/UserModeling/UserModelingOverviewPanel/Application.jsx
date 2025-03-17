@@ -4,7 +4,6 @@ import { LineApp2 } from "@/components/Graphs/extraDropdownCharts/LineApp2";
 import { LineApplication } from "@/components/Graphs/extraDropdownCharts/LineAppication";
 import { TimelineApplication } from "@/components/Graphs/TimelineApplication";
 import { TImelinechart } from "@/components/Graphs/TImelineChart";
-import "@yworks/react-yfiles-supply-chain/dist/index.css";
 import {
   TableCell,
   Table,
