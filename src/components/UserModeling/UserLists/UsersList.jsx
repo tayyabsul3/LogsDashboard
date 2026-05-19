@@ -20,12 +20,16 @@ const UsersNames = ({ userlist, onUserClick, selectedUser }) => {
             <div className="sm:col-span-10">
               <div className="flex flex-row align-middle justify-between">
                 <h3 className="text-white text-md text-pretty">{user.username}</h3>
-                <div className="ms-3 px-4 rounded-sm bg-green-500">
-                  <h5>Active</h5>
+                <div className={`ms-3 px-3 py-0.5 rounded text-xs text-white capitalize ${
+                  user.status === "active" ? "bg-green-500" :
+                  user.status === "idle" ? "bg-amber-500 text-slate-900" :
+                  "bg-red-500"
+                }`}>
+                  <h5>{user.status || "Active"}</h5>
                 </div>
               </div>
               <div className="mt-1 text-white text-sm">
-                <h5>Risk Score: 20</h5>
+                <h5>Risk Score: {user.riskScore || 20}</h5>
               </div>
             </div>
           </div>

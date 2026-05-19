@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { mockLogs, mockGraphData } from "@/lib/mockData";
 import { LuFilter } from "react-icons/lu";
 import {
   Table,
@@ -42,136 +42,68 @@ const LogsAnalysis = () => {
   const [selectedTime, setSelectedTime] = useState(15);
   const [selectedFormat, setSelectedFormat] = useState("minutes");
   const [isLogTypeOpen, setIsLogTypeOpen] = useState(false);
-  // const [levelOPen, setlevelOPen] = useState(true);
-  // const [isNodeNameOpen, setIsNodeNameOpen] = useState(false);
-  // const [isIpAddressOpen, setIsIpAddressOpen] = useState(false);
-  // const [isMachineTypeOpen, setIsMachineTypeOpen] = useState(false);
-  // const [isVendorOpen, setIsVendorOpen] = useState(false);
 
-  const [logs, setLogs] = useState([
-    {
-      message:
-        "Process accessed:\nRuleName: technique_id=T1036,technique_name=Masquerading\nUtcTime: 2024-09-02 12:24:56.224\nSourceProcessGUID: {ba9fb914-5f64-66d5-b203-00000000aa00}\nSourceProcessId: 11840\nSourceThreadId: 11828\nSourceImage: C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\nTargetProcessGUID: {ba9fb914-5f60-66d5-a303-00000000aa00}\nTargetProcessId: 3560\nTargetImage: C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\nGrantedAccess: 0x1401\nCallTrace: C:\\WINDOWS\\SYSTEM32\\ntdll.dll+9da24|C:\\WINDOWS\\System32\\KERNELBASE.dll+338ae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+27c26bc|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+26b1473|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9f044|UNKNOWN(00007FF67E460BEC)|UNKNOWN(00007FF67E4503FC)|UNKNOWN(00007FF67E17C9EF)|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a59c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a19b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+376941c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+372acf1|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+201cf53|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2055c7b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2052804|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204c20a|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204d312|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1ffd00|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1fbbae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+43bb942|C:\\WINDOWS\\System32\\KERNEL32.DLL+17374|C:\\WINDOWS\\SYSTEM32\\ntdll.dll+4cc91\nSourceUser: DESKTOP-0CI5G2M\\Almadina Computers\nTargetUser: DESKTOP-0CI5G2M\\Almadina Computers",
-      timestamp: "2024-09-02T12:24:56.224Z",
-      winlog: {
-        api: "wineventlog",
-        channel: "Microsoft-Windows-Sysmon/Operational",
-        computer_name: "DESKTOP-0CI5G2M",
-        event_data: {
-          CallTrace:
-            "C:\\WINDOWS\\SYSTEM32\\ntdll.dll+9da24|C:\\WINDOWS\\System32\\KERNELBASE.dll+338ae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+27c26bc|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+26b1473|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9f044|UNKNOWN(00007FF67E460BEC)|UNKNOWN(00007FF67E4503FC)|UNKNOWN(00007FF67E17C9EF)|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a59c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a19b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+376941c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+372acf1|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+201cf53|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2055c7b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2052804|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204c20a|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204d312|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1ffd00|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1fbbae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+43bb942|C:\\WINDOWS\\System32\\KERNEL32.DLL+17374|C:\\WINDOWS\\SYSTEM32\\ntdll.dll+4cc91",
-          GrantedAccess: "0x1401",
-          SourceUser: "DESKTOP-0CI5G2M\\Almadina Computers",
-          TargetImage:
-            "C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
-          TargetProcessGUID: "{ba9fb914-5f60-66d5-a303-00000000aa00}",
-          TargetProcessId: "3560",
-          TargetUser: "DESKTOP-0CI5G2M\\Almadina Computers",
-        },
-        event_id: "10",
-        opcode: "Info",
-        process: {
-          pid: 4988,
-          thread: {
-            id: 6368,
-          },
-        },
-        provider_guid: "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
-        provider_name: "Microsoft-Windows-Sysmon",
-        record_id: "721069",
-        task: "Process accessed (rule: ProcessAccess)",
-        user: {
-          domain: "NT AUTHORITY",
-          identifier: "S-1-5-18",
-          name: "SYSTEM",
-          type: "User",
-        },
-        version: 3,
-      },
-    },
-    {
-      message:
-        "Process accessed:\nRuleName: technique_id=T1036,technique_name=Masquerading\nUtcTime: 2024-09-02 12:24:57.619\nSourceProcessGUID: {ba9fb914-5f6c-66d5-dd03-00000000aa00}\nSourceProcessId: 6340\nSourceThreadId: 8976\nSourceImage: C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\nTargetProcessGUID: {ba9fb914-5f60-66d5-a303-00000000aa00}\nTargetProcessId: 3560\nTargetImage: C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\nGrantedAccess: 0x1401\nCallTrace: C:\\WINDOWS\\SYSTEM32\\ntdll.dll+9da24|C:\\WINDOWS\\System32\\KERNELBASE.dll+338ae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+27c26bc|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+26b1473|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9f044|UNKNOWN(00007FF67E11B8A3)|UNKNOWN(00007FF67E09525F)|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a59c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a19b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+376941c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+372acf1|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+201cf53|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2055c7b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2052804|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204c20a|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204d312|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1ffd00|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1fbbae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+43bb942|C:\\WINDOWS\\System32\\KERNEL32.DLL+17374|C:\\WINDOWS\\SYSTEM32\\ntdll.dll+4cc91\nSourceUser: DESKTOP-0CI5G2M\\Almadina Computers\nTargetUser: DESKTOP-0CI5G2M\\Almadina Computers",
-      timestamp: "2024-09-02T12:24:57.619Z",
-      winlog: {
-        api: "wineventlog",
-        channel: "Microsoft-Windows-Sysmon/Operational",
-        computer_name: "DESKTOP-0CI5G2M",
-        event_data: {
-          CallTrace:
-            "C:\\WINDOWS\\SYSTEM32\\ntdll.dll+9da24|C:\\WINDOWS\\System32\\KERNELBASE.dll+338ae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+27c26bc|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+26b1473|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9f044|UNKNOWN(00007FF67E11B8A3)|UNKNOWN(00007FF67E09525F)|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a59c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+3c9a19b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+376941c|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+372acf1|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+201cf53|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2055c7b|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+2052804|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204c20a|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+204d312|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1ffd00|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+1fbbae|C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe+43bb942|C:\\WINDOWS\\System32\\KERNEL32.DLL+17374|C:\\WINDOWS\\SYSTEM32\\ntdll.dll+4cc91",
-          GrantedAccess: "0x1401",
-          SourceUser: "DESKTOP-0CI5G2M\\Almadina Computers",
-          TargetImage:
-            "C:\\Users\\Almadina Computers\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
-          TargetProcessGUID: "{ba9fb914-5f60-66d5-a303-00000000aa00}",
-          TargetProcessId: "3560",
-          TargetUser: "DESKTOP-0CI5G2M\\Almadina Computers",
-        },
-        event_id: "10",
-        opcode: "Info",
-        process: {
-          pid: 4988,
-          thread: {
-            id: 6368,
-          },
-        },
-        provider_guid: "{5770385f-c22a-43e0-bf4c-06f5698ffbd9}",
-        provider_name: "Microsoft-Windows-Sysmon",
-        record_id: "721070",
-        task: "Process accessed (rule: ProcessAccess)",
-        user: {
-          domain: "NT AUTHORITY",
-          identifier: "S-1-5-18",
-          name: "SYSTEM",
-          type: "User",
-        },
-        version: 3,
-      },
-    },
-  ]);
-
-  const [Data, setData] = useState([]);
+  const [logs, setLogs] = useState(mockLogs);
+  const [Data, setData] = useState(mockGraphData);
   const [alerts, setalerts] = useState([]);
   const [timeRange, setTimeRange] = useState("1h");
   const [expandedLogs, setExpandedLogs] = useState({});
-  const [filteredLogs, setFilteredLogs] = useState([]);
+  const [filteredLogs, setFilteredLogs] = useState(mockLogs);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const fetchLogs = () => {
-    console.log("Fetching logs...");
-    setLoading(true);
-    axios
-      .get("http://20.244.86.188:5000/api/logs?time_range=32m")
-      .then((response) => {
-        console.log("Data Fetched..");
-        console.log(response.data);
-        setData(response.data[1]);
-        setLogs(response.data[0]);
-        setFilteredLogs(response.data[0]);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-        setLoading(false);
-      });
 
-    //RUles Endpoint Request
+  const fetchLogs = () => {
+    console.log("Simulating logs fetch...");
+    setLoading(true);
+    setTimeout(() => {
+      setData(mockGraphData);
+      setLogs(mockLogs);
+      // Re-apply filter if any search exists
+      if (searchTerm) {
+        const filtered = mockLogs.filter(
+          (log) =>
+            log.message.toLowerCase().includes(searchTerm) ||
+            log.timestamp.toLowerCase().includes(searchTerm)
+        );
+        setFilteredLogs(filtered);
+      } else {
+        setFilteredLogs(mockLogs);
+      }
+      setLoading(false);
+      console.log("Mock data set successfully.");
+    }, 450);
   };
+
   function checkRules() {
-    console.log("Checking rules...");
-    axios
-      .get("http://20.244.86.188:5000/rule_check", {
-        headers: {
-          "ngrok-skip-browser-warning": "69420",
-        },
-      })
-      .then((response) => {
-        console.log("Alerts Fetched..");
-        console.log(response.data);
-      })
-      .catch((error) => console.error("There was an error!", error));
+    console.log("Local rules check triggered.");
+    // Locally check for matching log rules
+    const localRules = JSON.parse(localStorage.getItem("dashboard_rules") || "[]");
+    const activeAlerts = JSON.parse(localStorage.getItem("dashboard_alerts") || "[]");
+    
+    let alertAdded = false;
+    localRules.forEach(rule => {
+      mockLogs.forEach(log => {
+        // Simple heuristic: If log message contains the rule criteria or source IP
+        const matchesIP = rule.source_ip === "Any" || log.message.includes(rule.source_ip);
+        const matchesName = log.message.toLowerCase().includes(rule.ruleName?.toLowerCase() || "");
+        
+        if (matchesIP && matchesName) {
+          const alreadyExists = activeAlerts.some(a => a.rule.RuleName === rule.ruleName && a.log.message === log.message);
+          if (!alreadyExists) {
+            activeAlerts.push({
+              rule: { RuleName: rule.ruleName },
+              log: { message: log.message }
+            });
+            alertAdded = true;
+          }
+        }
+      });
+    });
+
+    if (alertAdded) {
+      localStorage.setItem("dashboard_alerts", JSON.stringify(activeAlerts));
+    }
   }
 
   // Handle search to filter logs based on the 'message' and 'timestamp' fields
@@ -188,10 +120,8 @@ const LogsAnalysis = () => {
   };
 
   useEffect(() => {
-    if (logs.length === 2 || logs.length < 2) {
-      fetchLogs();
-      checkRules();
-    }
+    // Initial load and rules simulation
+    checkRules();
   }, [timeRange]);
 
   const Timeline = ["Last", "Previous"];

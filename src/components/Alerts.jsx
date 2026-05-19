@@ -7,33 +7,27 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import axios from "axios";
+import { defaultAlerts } from "@/lib/mockData";
 
 const Alerts = () => {
   const [alerts, setalerts] = useState([]);
 
   function getAllalerts() {
-    axios
-      .get("http://20.244.86.188:5000/get_all_alerts", {
-        headers: {
-          "ngrok-skip-browser-warning": "69420",
-        },
-      })
-      .then((response) => {
-        // alert("Data F");
-        console.log(response.data);
-        setalerts(response.data);
-      })
-      .catch((error) => console.error("There was an error!", error));
+    const localAlerts = localStorage.getItem("dashboard_alerts");
+    if (localAlerts) {
+      setalerts(JSON.parse(localAlerts));
+    } else {
+      localStorage.setItem("dashboard_alerts", JSON.stringify(defaultAlerts));
+      setalerts(defaultAlerts);
+    }
   }
 
   function handleRuleDeletion() {
     console.log("Rule Deletion");
   }
+  
   useEffect(() => {
-    if (alerts.length === 0) {
-      getAllalerts();
-    }
+    getAllalerts();
   }, []);
 
   return (

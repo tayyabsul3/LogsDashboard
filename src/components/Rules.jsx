@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import axios from "axios";
+import { defaultRules } from "@/lib/mockData";
 
 const Rules = () => {
   const [rules, setrules] = useState([]);
@@ -38,43 +38,57 @@ const Rules = () => {
   ];
 
   function sendRules() {
-    const data = JSON.stringify(formData);
-    console.log(data);
-    axios
-      .post("http://20.244.86.188:5000/add_rule", data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((d) => {
-        toast({ title: "Message", description: "Rule Added Succesfully " });
-      })
-      .catch((e) => {
-        console.log("Error : ", e);
-      });
-  }
-  function getAllRules() {
-    axios
-      .get("http://20.244.86.188:5000/get_all_rules", {
-        headers: {
-          "ngrok-skip-browser-warning": "69420",
-        },
-      })
-      .then((response) => {
-        // alert("Data F");
-        console.log(response.data);
-        setrules(response.data);
-      })
-      .catch((error) => console.error("There was an error!", error));
+    if (!formData.ruleName) {
+      alert("Rule Name is required!");
+      return;
+    }
+
+    const newRule = {
+      RuleName: formData.ruleName,
+      source_ip: formData.SIP || "Any",
+      source_port: formData.SPort || "Any",
+      destination_ip: formData.DIP || "Any",
+      destination_port: formData.DPort || "Any",
+      protocol: "tcp",
+      Description: formData.Description || "Custom defined rule."
+    };
+
+    const updatedRules = [...rules, newRule];
+    setrules(updatedRules);
+    localStorage.setItem("dashboard_rules", JSON.stringify(updatedRules));
+
+    // Reset Form Data
+    setFormData({
+      DPort: "",
+      SIP: "",
+      Description: "",
+      SPort: "",
+      ruleName: "",
+      DIP: "",
+    });
+
+    alert("Rule Added Successfully!");
   }
 
-  function handleRuleDeletion() {
-    console.log("Rule Deletion");
-  }
-  useEffect(() => {
-    if (rules.length === 0) {
-      getAllRules();
+  function getAllRules() {
+    const localRules = localStorage.getItem("dashboard_rules");
+    if (localRules) {
+      setrules(JSON.parse(localRules));
+    } else {
+      localStorage.setItem("dashboard_rules", JSON.stringify(defaultRules));
+      setrules(defaultRules);
     }
+  }
+
+  function handleRuleDeletion(ruleToDelete) {
+    const updatedRules = rules.filter(r => r.RuleName !== ruleToDelete.RuleName);
+    setrules(updatedRules);
+    localStorage.setItem("dashboard_rules", JSON.stringify(updatedRules));
+    alert(`Rule "${ruleToDelete.RuleName}" deleted successfully.`);
+  }
+
+  useEffect(() => {
+    getAllRules();
   }, []);
 
   return (

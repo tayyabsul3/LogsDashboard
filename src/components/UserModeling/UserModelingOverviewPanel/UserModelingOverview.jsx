@@ -7,8 +7,8 @@ import UserModelingSuspiciousUser from "../Analytics/UserModelingSuspiciousUserB
 import { UserModelingActivityOverTimeChart } from "../Analytics/UserModelingUserActivityChart";
 import UserModelingMapOverview from "../Analytics/UserModelingMapOverview";
 import UserModelingOverviewRiskScoreChart from "../Analytics/UserModelingRiskScore";
-import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
+import { mockUserModelingOverview } from "@/lib/mockData";
 import { CgClose } from "react-icons/cg";
 import {
   Table,
@@ -26,34 +26,8 @@ import Network from "./Network";
 import Application from "./Application";
 import System from "./System";
 const UserModelingOverviewPanel = ({ sideScreen, setsideScreen }) => {
-  const [overviewData, setOverviewData] = useState({});
-  const [loading, setLoading] = useState(true);
-  // console.log(
-  //   "overview: ",
-  //   overviewData.user_activity_over_time_separate.activityConfig
-  // );
-
-  // const fetchUserModelingOverviewData = () => {
-  //   console.log("Fetching Overview Data");
-  //   setLoading(true);
-  //   axios
-  //     .get("http://20.244.86.188:5000/users/data")
-  //     .then((response) => {
-  //       console.log("response:", response.data);
-  //       setOverviewData(response.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was an error!", error);
-  //       setLoading(false);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   console.log("fetching fn!");
-  //   fetchUserModelingOverviewData();
-  //   console.log("Done fetch");
-  // }, []);
+  const [overviewData, setOverviewData] = useState(mockUserModelingOverview);
+  const [loading, setLoading] = useState(false);
   return (
     <div className="h-[90vh] overflow-y-scroll">
       {sideScreen === "network" ? (

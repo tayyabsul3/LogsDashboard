@@ -7,6 +7,7 @@ import UserModelingOverviewPanel from "../UserModelingOverviewPanel/UserModeling
 import UserModelingDetailPanel from "../UserModelingDetail/UserModelingDetail";
 import { BsSearch } from "react-icons/bs";
 import axios from "axios";
+import { mockUsers } from "@/lib/mockData";
 import {
   Accordion,
   AccordionContent,
@@ -16,89 +17,12 @@ import {
 const UserModelOverview = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedUser, setSelectedUser] = useState(false);
-  // const userData = [
-  //   {
-  //     id: "user_001",
-  //     username: "john.doe",
-  //     fullName: "John Doe",
-  //     role: "IT Administrator",
-  //     department: "IT",
-  //     status: "active",
-  //     riskScore: 75,
-  //     lastLogin: "2024-10-10 09:45",
-  //     currentIP: "192.168.1.100",
-  //     geolocation: "New York, USA",
-  //     device: "Windows 10",
-  //     lastActivity: "Accessed payroll file"
-  //   },
-  //   {
-  //     id: "user_002",
-  //     username: "jane.smith",
-  //     fullName: "Jane Smith",
-  //     role: "Marketing Manager",
-  //     department: "Marketing",
-  //     status: "idle",
-  //     riskScore: 35,
-  //     lastLogin: "2024-10-10 08:15",
-  //     currentIP: "192.168.1.101",
-  //     geolocation: "Los Angeles, USA",
-  //     device: "MacBook Pro",
-  //     lastActivity: "Sent marketing email"
-  //   },
-  //   {
-  //     id: "user_003",
-  //     username: "sam.wilson",
-  //     fullName: "Sam Wilson",
-  //     role: "Sales Executive",
-  //     department: "Sales",
-  //     status: "suspicious",
-  //     riskScore: 90,
-  //     lastLogin: "2024-10-10 09:00",
-  //     currentIP: "192.168.1.102",
-  //     geolocation: "London, UK",
-  //     device: "Windows 11",
-  //     lastActivity: "Multiple failed login attempts"
-  //   },
-  //   {
-  //     id: "user_004",
-  //     username: "emma.taylor",
-  //     fullName: "Emma Taylor",
-  //     role: "Finance Analyst",
-  //     department: "Finance",
-  //     status: "active",
-  //     riskScore: 50,
-  //     lastLogin: "2024-10-10 10:00",
-  //     currentIP: "192.168.1.103",
-  //     geolocation: "Chicago, USA",
-  //     device: "Windows 10",
-  //     lastActivity: "Reviewed budget report"
-  //   }
-  // ];
 
   const [userData, setUserData] = useState([]);
 
-  // const fetchUsersName = () => {
-  //   console.log("Fetching User Names...");
-  //   // setLoading(true);
-  //   axios
-  //     .get(
-  //       "http://20.244.86.188:5000/get_user",
-  //     )
-  //     .then((response) => {
-  //       setUserData(response.data)
-
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was an error!", error)
-  //       // setLoading(false);
-  //     }
-  //   );
-
-  // };
-
-  // useEffect(()=> {
-  //   fetchUsersName()
-  // }, [])
+  useEffect(() => {
+    setUserData(mockUsers);
+  }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
 
